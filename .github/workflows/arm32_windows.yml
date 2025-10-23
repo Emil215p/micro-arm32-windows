@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout source
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -23,7 +23,7 @@ jobs:
         GOOS=windows GOARCH=arm CGO_ENABLED=0 go build -ldflags="-s -w -X 'main.Version=2.0.14' -X 'main.CommitHash=${{ github.sha }}' -X 'main.CompileDate=${{ github.event.head_commit.timestamp }}'" -o micro.exe
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: micro-arm32
         path: cmd/micro/micro.exe
